@@ -1,0 +1,20 @@
+IDIR =../include
+CC=gcc
+
+ODIR=obj
+LDIR =../lib
+
+LIBS=-lm
+
+TARGET = loadbalancer
+OBJ = loadbalancer.o
+
+$(ODIR)/%.o: %.c
+	$(CC) -c -o $@ $<
+
+$(TARGET): $(OBJ)
+	$(CC) -o $@ $^
+	rm -f $(OBJ)
+
+clean:
+	rm -f $(OBJ) $(TARGET)
