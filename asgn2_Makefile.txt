@@ -1,0 +1,21 @@
+IDIR =../include
+CC=gcc
+
+ODIR=obj
+LDIR =../lib
+
+LIBS=-lm
+
+TARGET = httpserver
+OBJ = httpserver.o
+
+$(ODIR)/%.o: %.c
+	$(CC) -c -o $@ $<
+
+$(TARGET): $(OBJ)
+	$(CC) -o $@ $^ -lpthread
+	rm -f $(OBJ)
+
+clean:
+	rm -f $(OBJ) $(TARGET)
+
